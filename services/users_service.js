@@ -54,7 +54,7 @@ const loginUser = async (requestBody) => {
     const { email, password } = requestBody;
 
     console.log(`Attempting login for ${email}`);
-    
+
     let userResponse;
     let user;
     try{
@@ -65,11 +65,11 @@ const loginUser = async (requestBody) => {
             [ email ]
         )
         if(userResponse.rows.length === 0){
-            throw new Error("Unable to find a user with the email you specified");    
+            throw new Error("Nonexistant credentials");    
         }
         user = userResponse.rows[0];
     }catch(e){
-        throw new Error("Unable to find a user with the email you specified");
+        throw new Error("Nonexistant credentials");
     }
 
     console.log(JSON.stringify(user, null, 4));
